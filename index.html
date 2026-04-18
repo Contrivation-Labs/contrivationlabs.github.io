@@ -261,6 +261,28 @@
     }
     .footer-social a:hover { color: var(--white); border-color: var(--white); }
 
+    /* ── AWARDS ── */
+    #awards { background: var(--white); }
+    .awards-grid {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      justify-content: center; margin-top: 2rem;
+    }
+    .award-card {
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--blue-pale); border-radius: 10px;
+      padding: 2rem 2.5rem; text-align: center;
+      border: 1px solid #d0e4f7;
+      box-shadow: 0 2px 12px rgba(21,101,192,0.08);
+      max-width: 260px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .award-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(21,101,192,0.14);
+    }
+    .award-card img { height: 140px; width: auto; object-fit: contain; margin-bottom: 1rem; }
+    .award-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       #hero { flex-direction: column; padding: 4rem 5%; }
@@ -285,6 +307,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#awards">Awards</a></li>
     <li><a href="#catalog">Products</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -352,6 +375,18 @@
       services that farmers can utilize to improve revenue and yield from their produce.
       We are committed to a robust technology and product roadmap introducing high-end
       farm mechanization solutions suited to the Indian Agriculture eco-system.
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Awards &amp; <span>Grants</span></h2>
+  <div class="awards-grid">
+    <div class="award-card">
+      <img src="media/awards.png" alt="Startup Karnataka — INR 2 Mn grant" />
+      <p>Grant recipient under the <strong>Startup Karnataka</strong> initiative</p>
     </div>
   </div>
 </section>
