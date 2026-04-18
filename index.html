@@ -131,16 +131,18 @@
     .product-card {
       border: 1px solid #e0e0e0; border-radius: 10px;
       overflow: hidden; max-width: 1000px;
+      margin: 0 auto;
       box-shadow: 0 4px 20px rgba(0,0,0,0.07);
     }
     .product-header {
-      background: var(--blue); color: var(--white);
+      background: var(--white);
+      border-bottom: 3px solid var(--blue-light);
       padding: 1.5rem 2rem; display: flex;
       align-items: center; gap: 1.5rem;
     }
-    .product-header img { height: 60px; width: auto; filter: brightness(0) invert(1); }
-    .product-header div h3 { font-size: 1.5rem; }
-    .product-header div p { opacity: 0.85; font-size: 0.9rem; margin-top: 0.2rem; }
+    .product-header img { height: 64px; width: auto; }
+    .product-header div h3 { font-size: 1.5rem; color: var(--dark); }
+    .product-header div p { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
     .product-body { padding: 2rem; }
     .product-images {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -300,9 +302,6 @@
     </p>
     <a class="btn btn-primary" href="#catalog">View Products</a>
     <a class="btn btn-outline" href="#contact">Get in Touch</a>
-  </div>
-  <div class="hero-logo">
-    <img src="media/Logo_Contrivation Labs.JPG" alt="Contrivation Labs" />
   </div>
 </section>
 
