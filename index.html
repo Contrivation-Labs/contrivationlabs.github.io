@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contrivation Labs | Agritech Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:       #1565C0;
+      --blue-light: #2196F3;
+      --blue-pale:  #E3F2FD;
+      --green:      #2E7D32;
+      --red:        #C62828;
+      --dark:       #1A237E;
+      --text:       #212121;
+      --muted:      #555;
+      --white:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--text); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 3px solid var(--blue-light);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 5%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 0.75rem;
+      text-decoration: none;
+    }
+    .nav-brand img { height: 52px; width: auto; }
+    .nav-brand span {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--dark); line-height: 1.2;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      color: var(--text); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue-light); }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--blue) 55%, var(--blue-light) 100%);
+      color: var(--white);
+      padding: 6rem 5% 5rem;
+      display: flex; align-items: center; gap: 3rem;
+      min-height: 480px;
+    }
+    .hero-text { flex: 1; }
+    .hero-text h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .hero-text h1 span { color: #90CAF9; }
+    .hero-text p {
+      font-size: 1.1rem; max-width: 560px;
+      opacity: 0.9; margin-bottom: 2rem; line-height: 1.7;
+    }
+    .btn {
+      display: inline-block; padding: 0.8rem 2rem;
+      border-radius: 4px; font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-primary { background: var(--red); color: var(--white); }
+    .btn-outline {
+      border: 2px solid var(--white); color: var(--white);
+      margin-left: 1rem;
+    }
+    .hero-logo { flex: 0 0 auto; }
+    .hero-logo img { height: 200px; width: auto; opacity: 0.92; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 5%; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue-light);
+      margin-bottom: 0.5rem;
+    }
+    h2.section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--dark); margin-bottom: 1.5rem;
+    }
+    h2.section-title span { color: var(--red); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--blue-pale); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    .about-text p {
+      color: var(--muted); line-height: 1.8;
+      margin-bottom: 1rem; font-size: 1rem;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .stat-card {
+      background: var(--white); border-radius: 8px;
+      padding: 1.5rem; text-align: center;
+      box-shadow: 0 2px 12px rgba(21,101,192,0.1);
+      border-top: 4px solid var(--blue-light);
+    }
+    .stat-card .stat-num {
+      font-size: 2rem; font-weight: 800; color: var(--blue);
+    }
+    .stat-card .stat-num.red { color: var(--red); }
+    .stat-card p { color: var(--muted); font-size: 0.9rem; margin-top: 0.3rem; }
+    .vision-box {
+      grid-column: 1 / -1;
+      background: var(--dark); color: var(--white);
+      border-radius: 8px; padding: 1.75rem 2rem;
+      font-size: 1rem; line-height: 1.8;
+    }
+    .vision-box strong { color: #90CAF9; }
+
+    /* ── CATALOG ── */
+    #catalog { background: var(--white); }
+    .product-card {
+      border: 1px solid #e0e0e0; border-radius: 10px;
+      overflow: hidden; max-width: 1000px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+    .product-header {
+      background: var(--blue); color: var(--white);
+      padding: 1.5rem 2rem; display: flex;
+      align-items: center; gap: 1.5rem;
+    }
+    .product-header img { height: 60px; width: auto; filter: brightness(0) invert(1); }
+    .product-header div h3 { font-size: 1.5rem; }
+    .product-header div p { opacity: 0.85; font-size: 0.9rem; margin-top: 0.2rem; }
+    .product-body { padding: 2rem; }
+    .product-images {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-bottom: 2rem;
+    }
+    .product-images img {
+      width: 100%; border-radius: 6px;
+      object-fit: cover; aspect-ratio: 4/3;
+      border: 1px solid #e0e0e0;
+    }
+    .product-desc {
+      color: var(--muted); line-height: 1.8;
+      font-size: 1rem; margin-bottom: 1.5rem;
+    }
+    .benefits {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .benefit {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      background: var(--blue-pale); padding: 1rem;
+      border-radius: 6px;
+    }
+    .benefit-icon {
+      font-size: 1.4rem; flex-shrink: 0;
+      line-height: 1;
+    }
+    .benefit h4 { font-size: 0.95rem; color: var(--dark); margin-bottom: 0.2rem; }
+    .benefit p  { font-size: 0.85rem; color: var(--muted); }
+    .savings-bar {
+      display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;
+    }
+    .saving-pill {
+      background: var(--green); color: var(--white);
+      padding: 0.6rem 1.25rem; border-radius: 30px;
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .saving-pill.red-pill { background: var(--red); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--blue-pale); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: start;
+    }
+    .contact-info p {
+      color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem;
+    }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      margin-bottom: 1rem; font-size: 0.95rem; color: var(--text);
+    }
+    .contact-detail strong { min-width: 80px; color: var(--dark); }
+    .contact-form {
+      background: var(--white); border-radius: 8px;
+      padding: 2rem; box-shadow: 0 2px 12px rgba(21,101,192,0.08);
+    }
+    .contact-form h3 {
+      font-size: 1.15rem; color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: 0.85rem; font-weight: 600;
+      color: var(--dark); margin-bottom: 0.35rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%; padding: 0.65rem 0.9rem;
+      border: 1px solid #ccc; border-radius: 4px;
+      font-size: 0.95rem; font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none; border-color: var(--blue-light);
+      box-shadow: 0 0 0 3px rgba(33,150,243,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .btn-submit {
+      background: var(--blue); color: var(--white);
+      border: none; cursor: pointer; width: 100%;
+      padding: 0.8rem; border-radius: 4px;
+      font-size: 1rem; font-weight: 700;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: var(--dark); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); color: var(--white);
+      padding: 2rem 5%; display: flex;
+      align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer .footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+    footer .footer-brand img { height: 40px; filter: brightness(0) invert(1); }
+    footer .footer-brand span { font-size: 0.95rem; opacity: 0.85; }
+    footer .footer-right { font-size: 0.85rem; opacity: 0.65; }
+    .social-links { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem; border-radius: 4px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .social-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+    .social-btn.linkedin { background: #0A66C2; color: var(--white); }
+    .social-btn.facebook { background: #1877F2; color: var(--white); }
+    .footer-social { display: flex; gap: 0.6rem; }
+    .footer-social a {
+      color: rgba(255,255,255,0.7); font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; padding: 0.3rem 0.6rem;
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-social a:hover { color: var(--white); border-color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      #hero { flex-direction: column; padding: 4rem 5%; }
+      .hero-logo { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .product-images { grid-template-columns: 1fr; }
+      .benefits { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">
+    <img src="media/Logo_Contrivation Labs.JPG" alt="Contrivation Labs logo" />
+    <span>Contrivation Labs</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#catalog">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="section-label">Bangalore, India &nbsp;·&nbsp; Est. 2019</p>
+    <h1>Harvest &amp; Post-Harvest<br><span>Solutions for Indian</span><br>Agriculture</h1>
+    <p>
+      We build farm mechanization solutions that <strong>eliminate</strong> bottlenecks
+      in the agri eco-system — not just shift them — improving yield and revenue
+      for farmers across India and global markets.
+    </p>
+    <a class="btn btn-primary" href="#catalog">View Products</a>
+    <a class="btn btn-outline" href="#contact">Get in Touch</a>
+  </div>
+  <div class="hero-logo">
+    <img src="media/Logo_Contrivation Labs.JPG" alt="Contrivation Labs" />
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <p class="section-label">Who We Are</p>
+    <h2 class="section-title">Contrivation <span>Labs</span></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Contrivation Labs is a Bangalore-based Agritech start-up, incorporated in
+        February 2019. We are focused on developing innovative Harvest and Post-Harvest
+        Solutions for the Indian Agriculture sector.
+      </p>
+      <p>
+        Our ideas germinate to find solutions for the Indian Farmer and Agriculture
+        Eco-system, but are equally suited for Global Markets.
+      </p>
+      <p>
+        Our revenue model is based on a hybrid mix of <strong>FaaS</strong> (Farming-as-a-Service)
+        and <strong>B2B sales</strong>, enabling flexible adoption for enterprises and individual
+        farm operators alike.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">2019</div>
+        <p>Year of Incorporation</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--green)">India</div>
+        <p>Headquartered in Bangalore</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num red">&gt;45%</div>
+        <p>Reduction in Operating Expenses</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num red">&gt;35%</div>
+        <p>Increase in Revenue for Users</p>
+      </div>
+    </div>
+    <div class="vision-box">
+      <strong>Our Vision:</strong> Build solutions that <strong>eliminate</strong> issues
+      and bottlenecks in the ecosystem — rather than merely shifting them — and create
+      services that farmers can utilize to improve revenue and yield from their produce.
+      We are committed to a robust technology and product roadmap introducing high-end
+      farm mechanization solutions suited to the Indian Agriculture eco-system.
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section id="catalog">
+  <p class="section-label">Product Catalog</p>
+  <h2 class="section-title">Our <span>Products</span></h2>
+
+  <div class="product-card">
+    <div class="product-header">
+      <img src="media/calyxtract_logo.png" alt="CalyXtract logo" />
+      <div>
+        <h3>CalyXtract&reg;</h3>
+        <p>Automated Chili Calyx &amp; Stem Separation System</p>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="product-images">
+        <img src="media/Calyxtract-productpic1.JPG" alt="CalyXtract machine — front-angle view" />
+        <img src="media/Calyxtract-productpic2.JPG" alt="CalyXtract machine — front view" />
+      </div>
+
+      <p class="product-desc">
+        CalyXtract is the first product designed and developed by Contrivation Labs. It is a
+        <strong>fully automated solution</strong> to separate the Calyx and Stem from Chili pods
+        without damaging the pods from stress caused by temperature, mechanical stress, or
+        harsh lighting. This preserves quality throughout the post-harvest process, enabling
+        operators to command premium pricing while dramatically cutting labour costs.
+      </p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">&#9881;</div>
+          <div>
+            <h4>Fully Automated</h4>
+            <p>No manual intervention required during calyx and stem separation.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">&#127798;</div>
+          <div>
+            <h4>Zero Pod Damage</h4>
+            <p>Gentle processing with no thermal, mechanical, or lighting stress on pods.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">&#128200;</div>
+          <div>
+            <h4>Lower OPEX</h4>
+            <p>Reduces operating expenses by more than 45% compared to manual processes.</p>
+          </div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">&#128176;</div>
+          <div>
+            <h4>Higher Revenue</h4>
+            <p>Enables equipment users to increase revenue by more than 35%.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="savings-bar">
+        <span class="saving-pill">&#8595; &gt;45% Operating Expenses</span>
+        <span class="saving-pill red-pill">&#8593; &gt;35% Revenue</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Contact <span>Us</span></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>
+        Interested in CalyXtract or want to learn more about our solutions?
+        Reach out to us — we'd love to discuss how Contrivation Labs can help
+        your business.
+      </p>
+      <div class="contact-detail">
+        <strong>Location</strong>
+        <span>Bangalore, Karnataka, India</span>
+      </div>
+      <div class="contact-detail">
+        <strong>Email</strong>
+        <!-- TODO: replace with your contact email -->
+        <a href="mailto:contact@contrivationlabs.com">contact@contrivationlabs.com</a>
+      </div>
+      <div class="contact-detail">
+        <strong>Phone</strong>
+        <!-- TODO: replace with your phone number -->
+        <span>+91 &ndash; XXXXX XXXXX</span>
+      </div>
+      <div class="social-links">
+        <a class="social-btn linkedin" href="https://www.linkedin.com/company/contrivation-labs-pvt-ltd/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.25 2.36 4.25 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>
+          LinkedIn
+        </a>
+        <a class="social-btn facebook" href="https://www.facebook.com/contrivation.labs?mibextid=ZbWKwL" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send us a message</h3>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your requirements..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <img src="media/Logo_Contrivation Labs.JPG" alt="Contrivation Labs" />
+    <span>Contrivation Labs &copy; 2025</span>
+  </div>
+  <div class="footer-right" style="display:flex; flex-direction:column; align-items:flex-end; gap:0.5rem;">
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/company/contrivation-labs-pvt-ltd/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.facebook.com/contrivation.labs?mibextid=ZbWKwL" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <span>Bangalore, India &nbsp;|&nbsp; Agritech &middot; Harvest &amp; Post-Harvest Solutions</span>
+  </div>
+</footer>
+
+</body>
+</html>
