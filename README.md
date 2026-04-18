@@ -1,6 +1,6 @@
 # Contrivation Labs — Company Website
 
-Live site: [contrivationlabs.github.io](https://contrivationlabs.github.io)
+Live site: [contrivation-labs.github.io/contrivationlabs.github.io](https://contrivation-labs.github.io/contrivationlabs.github.io/)
 
 Bangalore-based Agritech start-up focused on Harvest and Post-Harvest Solutions for the Indian Agriculture sector.
 
