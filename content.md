@@ -19,7 +19,7 @@ button_secondary: Get in Touch
 ## [ABOUT]
 # Company description, stat cards, and the vision statement.
 
-description_1: Contrivation Labs is a Bangalore-based Agritech start-up, incorporated in February 2019. We are focused on developing innovative Harvest and Post-Harvest Solutions for the Indian Agriculture sector. TESTESTEST
+description_1: Contrivation Labs is a Bangalore-based Agritech start-up, incorporated in February 2019. We are focused on developing innovative Harvest and Post-Harvest Solutions for the Indian Agriculture sector.
 description_2: Our ideas germinate to find solutions for the Indian Farmer and Agriculture Eco-system, but are equally suited for Global Markets.
 description_3: Our revenue model is based on a hybrid mix of FaaS (Farming-as-a-Service) and B2B sales, enabling flexible adoption for enterprises and individual farm operators alike.
 
