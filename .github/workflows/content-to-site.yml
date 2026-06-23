@@ -1,0 +1,51 @@
+name: 📝 Content Update → Create PR
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - content.md
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install anthropic
+
+      - name: Update index.html from content.md
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python .github/scripts/update_from_content.py
+
+      - name: Open or update PR with changes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: preview/content-update
+          base: main
+          delete-branch: false
+          title: "📝 Website update from content.md"
+          labels: automated
+          commit-message: "chore: update site from content.md [skip ci]"
+          body: |
+            ## Website content update
+
+            Changes in `content.md` have been applied to the site by Claude.
+
+            ### How to review
+            1. ⏳ Wait ~60 seconds — a **preview link** will appear as a comment below
+            2. 🔍 Click the preview link and check everything looks right
+            3. 💬 Leave a comment here if anything needs adjusting — Claude will fix it
+            4. ✅ Click **Merge pull request** to publish to the live site
+
+            > 🤖 Powered by Claude + GitHub Actions

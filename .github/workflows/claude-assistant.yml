@@ -1,0 +1,67 @@
+name: 🤖 Claude PR Assistant
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  assist:
+    # Only run on PR comments, never on plain issues, never on bot comments
+    if: |
+      github.event.issue.pull_request != null &&
+      github.event.comment.user.type != 'Bot' &&
+      !contains(github.event.comment.body, '[skip-claude]')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Get PR branch
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.issue.number
+            });
+            core.setOutput('branch', pr.head.ref);
+            core.setOutput('merged', String(pr.merged));
+
+      - name: Skip merged PRs
+        if: steps.pr.outputs.merged == 'true'
+        run: echo "PR already merged — skipping." && exit 0
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.pr.outputs.branch }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install anthropic
+
+      - name: Run Claude assistant
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: python .github/scripts/pr_assistant.py
+
+      - name: Redeploy preview after Claude edits
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          destination_dir: preview/pr-${{ github.event.issue.number }}
+          keep_files: true
+          commit_message: "preview: refresh after Claude edit [skip ci]"
+          exclude_assets: ".github,content.md,README.md,.gitignore,deck"
