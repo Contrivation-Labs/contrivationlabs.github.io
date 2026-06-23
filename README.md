@@ -3,15 +3,15 @@
 **Live site:** [contrivation-labs.github.io/contrivationlabs.github.io](https://contrivation-labs.github.io/contrivationlabs.github.io/)
 **Repository:** [github.com/Contrivation-Labs/contrivationlabs.github.io](https://github.com/Contrivation-Labs/contrivationlabs.github.io)
 
-> **No coding or terminal experience needed.** Every change is made through the GitHub website. Once saved, the live site updates automatically within ~60 seconds.
+> **No coding or terminal experience needed.** Edit one plain-text file on GitHub, commit, and the rest is automatic — preview, review, and publish.
 
 ---
 
 ## Table of Contents
 
-1. [File Structure](#file-structure)
-2. [Edit Website Text](#edit-website-text)
-3. [Replace or Add Images & Videos](#replace-or-add-images--videos)
+1. [How It Works](#how-it-works)
+2. [File Structure](#file-structure)
+3. [Edit Website Content](#edit-website-content)
 4. [Section-by-Section Guide](#section-by-section-guide)
    - [Hero (Banner)](#hero-banner)
    - [About](#about)
@@ -20,99 +20,75 @@
    - [Contact](#contact)
 5. [Add a New Product](#add-a-new-product)
 6. [Add a New Award](#add-a-new-award)
-7. [Change Colours or Layout](#change-colours-or-layout)
-8. [Commit & Deploy (no terminal)](#commit--deploy-no-terminal)
-9. [Help & Resources](#help--resources)
+7. [Replace or Add Images & Videos](#replace-or-add-images--videos)
+8. [Change Colours or Layout](#change-colours-or-layout)
+9. [Review, Chat & Publish (no terminal)](#review-chat--publish-no-terminal)
+10. [One-Time Setup](#one-time-setup)
+11. [Help & Resources](#help--resources)
+
+---
+
+## How It Works
+
+```
+You edit content.md on GitHub and click Commit
+              ↓
+Claude reads your changes and updates the website HTML
+              ↓
+A Pull Request opens automatically (~2 min)
+              ↓
+A preview link is posted as a comment on the PR
+              ↓
+You (or anyone) can leave comments — Claude will make fixes
+              ↓
+Click Merge → live site updates ✅
+```
+
+**You never need to touch HTML.** All content lives in one plain-text file: `content.md`.
 
 ---
 
 ## File Structure
 
-| File | Direct link | What it controls |
-|------|-------------|------------------|
-| `index.html` | [Open on GitHub](https://github.com/Contrivation-Labs/contrivationlabs.github.io/blob/main/index.html) | All visible text, sections, buttons, and links |
-| `styles.css` | [Open on GitHub](https://github.com/Contrivation-Labs/contrivationlabs.github.io/blob/main/styles.css) | All colours, fonts, spacing, and layout |
-| `media/` | [Open on GitHub](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) | All images and videos displayed on the site |
+| File | Link | What it controls |
+|------|------|-----------------|
+| `content.md` ⭐ | [Open on GitHub](https://github.com/Contrivation-Labs/contrivationlabs.github.io/blob/main/content.md) | **All website text** — edit this to update the site |
+| `styles.css` | [Open on GitHub](https://github.com/Contrivation-Labs/contrivationlabs.github.io/blob/main/styles.css) | Colours, fonts, spacing, layout |
+| `index.html` | [Open on GitHub](https://github.com/Contrivation-Labs/contrivationlabs.github.io/blob/main/index.html) | Generated automatically — do not edit directly |
+| `media/` | [Open on GitHub](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) | All images and videos |
 
 ```
 contrivationlabs.github.io/
 │
-├── index.html                        ← text, sections, links
-├── styles.css                        ← colours, fonts, layout
+├── content.md  ⭐               ← EDIT THIS to update website text
+├── index.html                   ← auto-generated, do not edit
+├── styles.css                   ← colours and layout only
 │
 └── media/
-    ├── Logo_Contrivation Labs.JPG    ← company logo (nav + footer)
-    ├── calyxtract_logo.png           ← CalyXtract product logo
-    ├── Calyxtract-productpic1.JPG    ← product photo 1
-    ├── Calyxtract-productpic2.JPG    ← product photo 2
-    ├── birac.png                     ← BIRAC award badge
-    ├── startup_karnataka.png         ← Startup Karnataka award badge
-    └── pusa_krishi.png               ← Pusa Krishi award badge
+    ├── Logo_Contrivation Labs.JPG
+    ├── calyxtract_logo.png
+    ├── Calyxtract-productpic1.JPG
+    ├── Calyxtract-productpic2.JPG
+    ├── birac.png
+    ├── startup_karnataka.png
+    └── pusa_krishi.png
 ```
-
-**Rule of thumb:**
-- Change **words or links** → edit `index.html`
-- Change **colours, fonts, or spacing** → edit `styles.css`
-- Add or replace **images/videos** → upload to `media/`
 
 ---
 
-## Edit Website Text
+## Edit Website Content
 
-All visible text on the site lives in [`index.html`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/blob/main/index.html).
+All visible text on the site is controlled by [`content.md`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/blob/main/content.md).
 
-1. Click the link above to open the file on GitHub
-2. Click the **pencil icon** (✏️ Edit this file) in the top-right of the file view
-3. Press **Ctrl+F** to open browser search and find the text you want to change
-4. Make your edits
-5. Click **Commit changes** (see [Commit & Deploy](#commit--deploy-no-terminal))
+### Steps
 
-> **What are HTML tags?** Text on the page sits between angle-bracket tags, for example:
-> `<p>This is a paragraph.</p>` or `<h1>This is a heading.</h1>`
-> Only edit the words between the tags. Leave the tags themselves (`<p>`, `</p>`, etc.) untouched.
+1. Open [`content.md`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/content.md) on GitHub (link opens the editor)
+2. Find the section you want to update — sections are labelled `## [HERO]`, `## [ABOUT]`, etc.
+3. Change the text to the right of the colon (e.g. `tagline: your new tagline here`)
+4. Click **Commit changes** → leave the branch as `main` → click **Commit changes** again
+5. A Pull Request opens in ~2 minutes with a live preview link
 
----
-
-## Replace or Add Images & Videos
-
-All media files live in the [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) folder.
-
-### Recommended formats and sizes
-
-| Use | Format | Recommended size |
-|-----|--------|-----------------|
-| Company / product logos | PNG (transparent background preferred) | Max 500 px wide |
-| Product photos | JPG | Max 1200 × 900 px |
-| Award badges | PNG | Max 400 × 400 px |
-| Demo video | MP4 (H.264) | Max 50 MB |
-
-> Compress images before uploading at [squoosh.app](https://squoosh.app) to keep the site fast.
-
-### Replace an existing image
-
-1. Rename your new image to **exactly match** the filename it replaces (e.g. `Calyxtract-productpic1.JPG`)
-2. Open [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) on GitHub
-3. Click **Add file → Upload files**
-4. Drop in your file — GitHub overwrites the old one automatically when names match
-5. Click **Commit changes**
-
-### Add a new image
-
-1. Upload the file to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media)
-2. Note the exact filename (e.g. `new-product-photo.JPG`)
-3. Reference it in `index.html` as `src="media/new-product-photo.JPG"`
-
-> **Naming rule:** No spaces in filenames. Use hyphens or underscores (e.g. `field-photo-2.jpg` not `field photo 2.jpg`).
-
-### Embed a video
-
-Upload the `.mp4` to `media/`, then add this block in `index.html` where you want the video to appear:
-
-```html
-<video controls width="100%">
-  <source src="media/your-video.mp4" type="video/mp4" />
-</video>
-```
+> **What are the `#` lines?** Lines starting with `#` are notes/instructions for editors — they are ignored by the system. Only lines with `key: value` pairs update the site.
 
 ---
 
@@ -120,210 +96,195 @@ Upload the `.mp4` to `media/`, then add this block in `index.html` where you wan
 
 ### Hero (Banner)
 
-The full-width banner at the top of the page.
+**In `content.md`, find:** `## [HERO]`
 
-**Search for in `index.html`:** `<!-- HERO -->`
-
-| What to change | What to find and edit |
-|----------------|-----------------------|
-| Main heading | Text inside `<h1>…</h1>` |
-| Subtitle paragraph | `<p>` immediately below the `<h1>` |
-| "View Products" button | Text inside `<a class="btn btn-primary">` |
-| "Get in Touch" button | Text inside `<a class="btn btn-outline">` |
+| Key | What it changes |
+|-----|----------------|
+| `tagline` | The large heading text |
+| `subtext` | The paragraph below the heading |
+| `button_primary` | The red "View Products" button label |
+| `button_secondary` | The outline "Get in Touch" button label |
 
 ---
 
 ### About
 
-Company description paragraphs, the four stat cards, and the vision statement banner.
+**In `content.md`, find:** `## [ABOUT]`
 
-**Search for in `index.html`:** `<!-- ABOUT -->`
-
-| What to change | What to find and edit |
-|----------------|-----------------------|
-| Company description | Paragraphs inside `<div class="about-text">` |
-| Stat card numbers | Text inside `<div class="stat-num">` |
-| Stat card labels | `<p>` directly below each `<div class="stat-num">` |
-| Vision statement | Text inside `<div class="vision-box">` |
+| Key | What it changes |
+|-----|----------------|
+| `description_1`, `_2`, `_3` | The three company description paragraphs |
+| `stat_1_value` … `stat_4_value` | The large numbers in the four stat cards |
+| `stat_1_label` … `stat_4_label` | The caption below each stat number |
+| `vision` | The dark banner vision statement |
 
 ---
 
 ### Awards & Grants
 
-Three side-by-side award cards, each with a logo image, description, and grant amount.
+**In `content.md`, find:** `## [AWARDS]`
 
-**Search for in `index.html`:** `<!-- AWARDS -->`
+Each `### Award N` block is one card on the site.
 
-Each card follows this pattern:
-```html
-<div class="award-card">
-  <img src="media/birac.png" alt="BIRAC grant" />
-  <p>Grant recipient under <strong>BIRAC</strong> — Ignite Innovate Incubate</p>
-  <span class="award-amount">INR 5 Mn</span>
-</div>
-```
-
-| What to change | What to find and edit |
-|----------------|-----------------------|
-| Award logo | Replace the image in `media/` or update `src="media/…"` |
-| Description text | Text inside `<p>` |
-| Grant amount | Text inside `<span class="award-amount">` |
+| Key | What it changes |
+|-----|----------------|
+| `image` | The award logo (must match a filename in `media/`) |
+| `description` | The text below the logo |
+| `amount` | The grant amount shown in red |
 
 ---
 
 ### Products
 
-The CalyXtract® product card: logo, two photos, description text, four benefit tiles, and savings pills.
+**In `content.md`, find:** `## [PRODUCT 1]`
 
-**Search for in `index.html`:** `<!-- CATALOG -->`
-
-| What to change | What to find and edit |
-|----------------|-----------------------|
-| Product logo | Replace `media/calyxtract_logo.png` in `media/` |
-| Product name | `<h3>` inside `.product-header` |
-| Product subtitle | `<p>` inside `.product-header` |
-| Product photos | Replace `Calyxtract-productpic1.JPG` / `Calyxtract-productpic2.JPG` in `media/` |
-| Product description | Text inside `<p class="product-desc">` |
-| Benefit tile title | `<h4>` inside each `<div class="benefit">` |
-| Benefit tile text | `<p>` inside each `<div class="benefit">` |
-| Savings pills | Text inside each `<span class="saving-pill">` |
+| Key | What it changes |
+|-----|----------------|
+| `logo` | Product logo image |
+| `name` | Product name (e.g. CalyXtract®) |
+| `subtitle` | One-line description under the name |
+| `photo_1`, `photo_2` | The two product photos |
+| `description` | Full product description paragraph |
+| `benefit_N_title` | Title of benefit tile N |
+| `benefit_N_text` | Description of benefit tile N |
+| `saving_1`, `saving_2` | The green/red savings pills |
 
 ---
 
 ### Contact
 
-Location, email, phone, social media buttons, and the enquiry form.
+**In `content.md`, find:** `## [CONTACT]`
 
-**Search for in `index.html`:** `<!-- CONTACT -->`
+| Key | What it changes |
+|-----|----------------|
+| `location` | City, state, country |
+| `email` | Contact email address |
+| `phone` | Phone number |
 
-| What to change | What to find and edit |
-|----------------|-----------------------|
-| Email address | Update both `href="mailto:…"` and the visible link text |
-| Phone number | Replace `+91 – XXXXX XXXXX` |
-| Location | Text inside the Location `<span>` |
-| Contact form | Sign up at [formspree.io](https://formspree.io), create a form, replace `YOUR_FORM_ID` in `action="https://formspree.io/f/YOUR_FORM_ID"` |
+> **Contact form:** Sign up at [formspree.io](https://formspree.io), create a form, then leave a comment on any PR asking Claude to update the form ID — it will do it for you.
 
 ---
 
 ## Add a New Product
 
-1. Open [`index.html`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/index.html) (link opens the editor directly)
-2. Press **Ctrl+F** and search for `<!-- CATALOG -->`
-3. Scroll to the closing `</section>` tag of the catalog section
-4. Paste the template below just before `</section>` and fill in your details:
-
-```html
-<div class="product-card" style="margin-top: 2rem;">
-  <div class="product-header">
-    <img src="media/YOUR-PRODUCT-LOGO.png" alt="Product logo" />
-    <div>
-      <h3>Product Name</h3>
-      <p>One-line description of the product</p>
-    </div>
-  </div>
-  <div class="product-body">
-    <div class="product-images">
-      <img src="media/product-photo-1.JPG" alt="Product photo 1" />
-      <img src="media/product-photo-2.JPG" alt="Product photo 2" />
-    </div>
-    <p class="product-desc">
-      Full product description goes here.
-    </p>
-    <div class="benefits">
-      <div class="benefit">
-        <div class="benefit-icon">&#9881;</div>
-        <div>
-          <h4>Benefit Title</h4>
-          <p>Short description of this benefit.</p>
-        </div>
-      </div>
-      <!-- Copy the block above to add more benefit tiles -->
-    </div>
-  </div>
-</div>
-```
-
-5. Upload the product logo and photos to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media)
-6. Commit the changes
+1. Open [`content.md`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/content.md)
+2. Copy the entire `## [PRODUCT 1]` block
+3. Paste it below and rename the header to `## [PRODUCT 2]`
+4. Fill in the new product's details
+5. Upload the product images to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media)
+6. Commit `content.md` — the PR and preview will be created automatically
 
 ---
 
 ## Add a New Award
 
-1. Open [`index.html`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/index.html)
-2. Press **Ctrl+F** and search for `<!-- AWARDS -->`
-3. Inside `<div class="awards-grid">`, paste a new card before the closing `</div>`:
+1. Open [`content.md`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/content.md)
+2. Find `## [AWARDS]` and copy any existing `### Award N` block
+3. Paste it below the last award and increment the number (e.g. `### Award 4`)
+4. Fill in the image, description, and amount
+5. Upload the award logo to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media)
+6. Commit `content.md`
 
-```html
-<div class="award-card">
-  <img src="media/YOUR-AWARD-LOGO.png" alt="Award name" />
-  <p>Short description of the award or grant</p>
-  <span class="award-amount">INR X Mn</span>
-</div>
-```
+---
 
-4. Upload the award logo to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media)
-5. Commit the changes
+## Replace or Add Images & Videos
+
+Images are stored in [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media). The filenames in `content.md` must match exactly.
+
+### Recommended formats and sizes
+
+| Use | Format | Max size |
+|-----|--------|----------|
+| Company / product logos | PNG | 500 px wide |
+| Product photos | JPG | 1200 × 900 px |
+| Award badges | PNG | 400 × 400 px |
+| Demo video | MP4 (H.264) | 50 MB |
+
+> Compress images before uploading at [squoosh.app](https://squoosh.app) to keep the site fast.
+
+### Replace an existing image
+
+1. Rename your new image to **exactly match** the old filename (e.g. `Calyxtract-productpic1.JPG`)
+2. Go to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) → **Add file → Upload files**
+3. Drop in your file → **Commit changes** (GitHub overwrites the old one automatically)
+
+### Add a new image
+
+1. Upload to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media)
+2. Note the exact filename (no spaces — use hyphens instead)
+3. Reference it in `content.md` as `image: media/your-filename.png`
 
 ---
 
 ## Change Colours or Layout
 
-All colours are defined as variables near the top of [`styles.css`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/styles.css) (link opens the editor).
+This is the only case where you edit `styles.css` instead of `content.md`.
 
-Find this block and change any hex value to update that colour everywhere on the site:
+Open [`styles.css`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/styles.css), find the `:root` block near the top, and change any hex value:
 
 ```css
 :root {
-  --blue:       #1565C0;   /* Primary blue  — navbar, primary buttons       */
-  --blue-light: #2196F3;   /* Accent blue   — borders, hover highlights      */
-  --blue-pale:  #E3F2FD;   /* Pale blue     — About, Awards section bg       */
-  --green:      #2E7D32;   /* Green         — savings pills                  */
-  --red:        #C62828;   /* Red           — CTA buttons, grant amounts     */
-  --dark:       #1A237E;   /* Dark navy     — hero bg, footer bg, headings   */
-  --text:       #212121;   /* Dark grey     — body text                      */
-  --muted:      #555555;   /* Mid grey      — secondary / caption text       */
-  --white:      #ffffff;   /* White         — card backgrounds                */
+  --blue:       #1565C0;   /* Primary blue  — navbar, buttons         */
+  --blue-light: #2196F3;   /* Accent blue   — borders, highlights      */
+  --blue-pale:  #E3F2FD;   /* Pale blue     — section backgrounds      */
+  --green:      #2E7D32;   /* Green         — savings pills            */
+  --red:        #C62828;   /* Red           — CTA buttons, amounts     */
+  --dark:       #1A237E;   /* Dark navy     — hero bg, footer          */
+  --text:       #212121;   /* Body text                                */
+  --muted:      #555555;   /* Secondary text                           */
+  --white:      #ffffff;   /* Card backgrounds                         */
 }
 ```
 
-Use [Google's colour picker](https://www.google.com/search?q=color+picker) or [coolors.co](https://coolors.co) to find hex codes for any colour.
+Use [Google's colour picker](https://www.google.com/search?q=color+picker) to find hex codes.
+
+> Editing `styles.css` directly deploys to the live site — no PR is created. Double-check your change before committing.
 
 ---
 
-## Commit & Deploy (no terminal)
+## Review, Chat & Publish (no terminal)
 
-### Editing a file (text or CSS)
+When you commit a change to `content.md`, a Pull Request is created automatically. Here is what to do with it:
 
-1. Open the file on GitHub — use the direct editor links in [File Structure](#file-structure)
-2. Make your changes in the editor
-3. Click **Commit changes** (green button, top-right)
-4. In the dialog: add an optional description → leave **"Commit directly to main"** selected → click **Commit changes**
+### 1 — Check the preview
 
-### Uploading files (images, videos)
+- Wait ~60 seconds after committing
+- A bot will post a comment on the PR with a **preview link**
+- Click the link to browse the full site before it goes live
 
-1. Go to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media)
-2. Click **Add file → Upload files**
-3. Drag and drop your files, or click to browse
-4. Scroll down → click **Commit changes**
+### 2 — Request changes via comment
 
-### Checking the deployment
+- If something looks wrong, **leave a comment** on the PR describing the fix
+- Claude will read your comment, update the site, and the preview will refresh in ~60 seconds
+- Examples of things you can ask:
+  - *"The product description on the second paragraph should say X instead of Y"*
+  - *"Can you make the vision statement shorter?"*
+  - *"The award amount for BIRAC should be INR 6 Mn"*
 
-After committing, the site rebuilds automatically. To confirm it's live:
+### 3 — Publish
 
-```
-You commit a change
-        ↓
-GitHub Pages detects the push (~5 sec)
-        ↓
-Site rebuilds automatically (~30–60 sec)
-        ↓
-Live site updates ✅
-```
+- When you're happy with the preview, click **Merge pull request**
+- The live site updates within ~60 seconds
 
-1. Go to the [Actions tab](https://github.com/Contrivation-Labs/contrivationlabs.github.io/actions)
-2. Wait for the **"pages build and deployment"** workflow to show a green ✅
-3. Visit the [live site](https://contrivation-labs.github.io/contrivationlabs.github.io/) to verify
+---
+
+## One-Time Setup
+
+> ⚠️ This only needs to be done **once** by someone with admin access to the repo.
+
+The automated preview system requires GitHub Pages to serve from the `gh-pages` branch instead of `main`.
+
+**Steps:**
+1. Push all the new files to GitHub (if not done already)
+2. Go to the repo → **Settings → Pages**
+3. Under **Source**, change to: `Deploy from a branch` → branch: `gh-pages` → folder: `/ (root)`
+4. Click **Save**
+5. Make any small edit to `index.html` or `styles.css` on `main` — this triggers the first production deploy and creates the `gh-pages` branch
+6. Previews will work on all future PRs automatically
+
+You also need one GitHub Secret (may already be set):
+- **Settings → Secrets and variables → Actions → New repository secret**
+- Name: `ANTHROPIC_API_KEY` | Value: your Anthropic API key
 
 ---
 
@@ -331,29 +292,28 @@ Live site updates ✅
 
 | I need to… | Link |
 |------------|------|
-| Edit page text | [Edit index.html](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/index.html) |
-| Edit colours/layout | [Edit styles.css](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/styles.css) |
+| Edit website content | [Edit content.md](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/content.md) |
 | Upload images or videos | [media/ folder](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) |
-| Check if my changes went live | [Actions tab](https://github.com/Contrivation-Labs/contrivationlabs.github.io/actions) |
-| Set up the contact form | [Formspree](https://formspree.io) |
+| Edit colours / layout | [Edit styles.css](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/styles.css) |
+| See open Pull Requests | [Pull Requests tab](https://github.com/Contrivation-Labs/contrivationlabs.github.io/pulls) |
+| Check deployment status | [Actions tab](https://github.com/Contrivation-Labs/contrivationlabs.github.io/actions) |
+| Set up contact form | [Formspree](https://formspree.io) |
 | Pick a colour hex code | [Google colour picker](https://www.google.com/search?q=color+picker) |
-| Compress images before upload | [Squoosh](https://squoosh.app) |
-| Learn HTML basics | [MDN HTML guide](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML) |
-| Learn about GitHub Pages | [GitHub Pages docs](https://docs.github.com/en/pages) |
-| How to edit files on GitHub | [GitHub editing docs](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files) |
-| GitHub support | [GitHub Support](https://support.github.com) |
+| Compress images | [Squoosh](https://squoosh.app) |
+| GitHub Pages docs | [docs.github.com/pages](https://docs.github.com/en/pages) |
+| GitHub support | [support.github.com](https://support.github.com) |
 | AI assistant for changes | [Claude Code session](https://claude.ai/code/session_01UV9AYgpT46qTgkMJz5jMqJ) |
 
 ---
 
 ## Quick Reference
 
-| I want to… | Edit this |
+| I want to… | What to do |
 |------------|-----------|
-| Change any text on the page | [`index.html`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/index.html) |
-| Update the company logo | Replace `Logo_Contrivation Labs.JPG` in [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) |
-| Add or swap a product photo | Replace or upload in [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media) |
-| Change a colour site-wide | [`styles.css`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/styles.css) — update the value in `:root` |
-| Update contact email or phone | [`index.html`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/index.html) — search `TODO` |
-| Add a new product | [`index.html`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/index.html) — see [Add a New Product](#add-a-new-product) |
-| Add a new award | [`index.html`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/index.html) — see [Add a New Award](#add-a-new-award) |
+| Update any text on the site | Edit [`content.md`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/content.md) and commit |
+| Add or change a product photo | Upload to [`media/`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/tree/main/media), update filename in `content.md` |
+| Add a new award | Add a `### Award N` block in `content.md` |
+| Add a new product | Add a `## [PRODUCT N]` block in `content.md` |
+| Change a colour | Edit the `:root` block in [`styles.css`](https://github.com/Contrivation-Labs/contrivationlabs.github.io/edit/main/styles.css) |
+| Fix something in a PR | Leave a comment on the PR — Claude will handle it |
+| Publish changes | Merge the Pull Request |
